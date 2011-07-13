@@ -1,5 +1,5 @@
 /*
- *  baka.h
+ *  interface.c
  *
  *  Copyright (c) 2011 Allan McRae <allan@archlinux.org>
  *
@@ -17,17 +17,25 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BAKA_BAKA_H
-#define BAKA_BAKA_H
+#include "interface.h"
 
-#include <gtk/gtk.h>
+GtkWidget *baka_load_interface(Baka *baka)
+{
+	GError *error = NULL;
 
-typedef struct _Baka Baka;
+	/* TODO - this only runs from within the src/ directory */
+	char *uifile = "../data/baka.ui";
 
-struct _Baka {
-	GtkApplication *application;
-	GtkBuilder *builder;
-	GtkWidget *window;
-};
+	baka->builder = gtk_builder_new();
 
-#endif
+	/* TODO - gtk_builder_set_translation_domain */
+
+	gtk_builder_add_from_file(baka->builder, uifile, &error);
+	/* TODO - check error */
+
+	gtk_builder_connect_signals(baka->builder, baka);
+
+	baka->window = GTK_WIDGET(gtk_builder_get_object(baka->builder, "baka_main_window"));
+
+	return baka->window;
+}

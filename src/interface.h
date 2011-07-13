@@ -1,5 +1,5 @@
 /*
- *  baka.h
+ *  interface.h
  *
  *  Copyright (c) 2011 Allan McRae <allan@archlinux.org>
  *
@@ -17,17 +17,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BAKA_BAKA_H
-#define BAKA_BAKA_H
+#ifndef BAKA_INTERFACE_H
+#define BAKA_INTERFACE_H
 
 #include <gtk/gtk.h>
+#include "baka.h"
 
-typedef struct _Baka Baka;
-
-struct _Baka {
-	GtkApplication *application;
-	GtkBuilder *builder;
-	GtkWidget *window;
-};
+GtkWidget *baka_load_interface(Baka* baka);
 
 #endif

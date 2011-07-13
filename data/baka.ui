@@ -1,0 +1,47 @@
+<interface>
+	<object class="GtkUIManager" id="baka_ui_manager">
+		<child>
+			<object class="GtkActionGroup" id="main_action_group">
+				<child>
+					<object class="GtkAction" id="file_menu">
+						<property name="label" translatable="yes">_File</property>
+					</object>
+				</child>
+				<child>
+					<object class="GtkAction" id="file_quit">
+						<property name="name" translatable="yes">_Quit</property>
+						<property name="stock_id">gtk-quit</property>
+						<property name="tooltip" translatable="yes">Quit the program</property>
+						<signal name="activate" handler="file_quit_action_callback" />
+					</object>
+				</child>
+			</object>
+		</child>
+		<ui>
+			<menubar name="baka_menubar">
+				<menu name="file" action="file_menu">
+					<menuitem name="quit" action="file_quit"/>
+				</menu>
+			</menubar>
+		</ui>
+	</object>
+
+	<object class="GtkWindow" id="baka_main_window">
+		<property name="title" translatable="yes">Baka Package Manager</property>
+		<property name="default_height">250</property>
+		<property name="default_width">440</property>
+		<child>
+			<object class="GtkVBox" id="baka_main_vbox">
+				<property name="visible">True</property>
+				<child>
+					<object class="GtkMenuBar" id="baka_menubar" constructor="baka_ui_manager">
+						<property name="visible">True</property>
+					</object>
+					<packing>
+						<property name="expand">False</property>
+					</packing>
+				</child>
+			</object>
+		</child>
+	</object>
+</interface>

@@ -18,6 +18,7 @@
  */
 
 #include "baka.h"
+#include "interface.h"
 
 static void activate(GtkApplication *app, Baka *baka)
 {
@@ -28,7 +29,7 @@ static void activate(GtkApplication *app, Baka *baka)
 	if(list != NULL) {
 		gtk_window_present(GTK_WINDOW(list->data));
 	} else {
-		baka->window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+		baka->window = baka_load_interface(baka);
 		gtk_window_set_application(GTK_WINDOW(baka->window), app);
 		gtk_widget_show_all(baka->window);
 	}

@@ -1,5 +1,5 @@
 /*
- *  baka.h
+ *  menu.c
  *
  *  Copyright (c) 2011 Allan McRae <allan@archlinux.org>
  *
@@ -17,17 +17,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BAKA_BAKA_H
-#define BAKA_BAKA_H
+#include "menu.h"
 
-#include <gtk/gtk.h>
-
-typedef struct _Baka Baka;
-
-struct _Baka {
-	GtkApplication *application;
-	GtkBuilder *builder;
-	GtkWidget *window;
-};
-
-#endif
+void file_quit_action_callback(GtkAction *action, Baka *baka)
+{
+	gtk_widget_destroy(baka->window);
+}
