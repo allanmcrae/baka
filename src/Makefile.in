@@ -1,3 +1,5 @@
+# @configure_input@
+
 CC = gcc
 CFLAGS = -Wall -g -O0 `pkg-config --cflags gtk+-3.0 gmodule-2.0`
 LIBS = `pkg-config --libs gtk+-3.0 gmodule-2.0`
@@ -27,5 +29,11 @@ menu.o: menu.c menu.h baka.h
 
 clean:
 	-rm -f baka *.o
+
+Makefile: Makefile.in ../config.status
+	cd .. && ./config.status src/$@
+
+../config.status: ../configure
+	cd .. && ./config.status --recheck
 
 .PHONY: all clean
