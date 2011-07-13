@@ -17,35 +17,38 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <gtk/gtk.h>
+#include "baka.h"
 
-static void activate(GtkApplication *app)
+static void activate(GtkApplication *app, Baka *baka)
 {
 	GList *list;
-	GtkWidget *window;
 
-	list = gtk_application_get_windows(app);
+	list = gtk_application_get_windows(baka->application);
 
 	if(list != NULL) {
 		gtk_window_present(GTK_WINDOW(list->data));
 	} else {
-		window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-		gtk_window_set_application(GTK_WINDOW(window), app);
-		gtk_widget_show_all(window);
+		baka->window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+		gtk_window_set_application(GTK_WINDOW(baka->window), app);
+		gtk_widget_show_all(baka->window);
 	}
 }
 
 
 int main(int argc, char **argv)
 {
-	GtkApplication *app;
+	Baka *baka;
 	gint status;
 
-	app = gtk_application_new("am.i.baka", G_APPLICATION_FLAGS_NONE);
-	g_signal_connect(app, "activate", G_CALLBACK(activate), NULL);
+	baka = g_slice_new(Baka);
 
-	status = g_application_run(G_APPLICATION(app), argc, argv);
-	g_object_unref(app);
+	baka->application = gtk_application_new("am.i.baka", G_APPLICATION_FLAGS_NONE);
+	g_signal_connect(baka->application, "activate", G_CALLBACK(activate), baka);
+
+	status = g_application_run(G_APPLICATION(baka->application), argc, argv);
+	g_object_unref(baka->application);
+
+	g_slice_free(Baka, baka);
 
 	return status;
 }
