@@ -21,11 +21,18 @@
 
 static void activate(GtkApplication *app)
 {
+	GList *list;
 	GtkWidget *window;
 
-	window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-	gtk_window_set_application(GTK_WINDOW(window), app);
-	gtk_widget_show_all(window);
+	list = gtk_application_get_windows(app);
+
+	if(list != NULL) {
+		gtk_window_present(GTK_WINDOW(list->data));
+	} else {
+		window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+		gtk_window_set_application(GTK_WINDOW(window), app);
+		gtk_widget_show_all(window);
+	}
 }
 
 
