@@ -1,5 +1,6 @@
 bin_PROGRAMS = baka
 
+AM_CPPFLAGS = -DDATADIR='"$(datadir)"'
 AM_CFLAGS = -Wall -g -O0
 AM_LDFLAGS = -g
 

@@ -21,6 +21,14 @@ AM_PATH_GTK_3_0([3.0.11],,AC_MSG_ERROR([Gtk+ 3.0.11 or higher is required.]))
 
 # Checks for library functions.
 
+
+# Allow running program from source directory
+AC_ARG_ENABLE(run-in-source-tree,
+              AC_HELP_STRING([--enable-run-in-source-tree],[enable searching for UI files in local directory]),
+              [AC_DEFINE(BAKA_RUN_IN_SOURCE_TREE, 1, [enable searching for UI files in local directory])],
+              [])
+
+
 AC_CONFIG_FILES([Makefile
                  data/Makefile
                  src/Makefile])

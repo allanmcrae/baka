@@ -22,9 +22,18 @@
 GtkWidget *baka_load_interface(Baka *baka)
 {
 	GError *error = NULL;
+	char *uifile;
 
-	/* TODO - this only runs from within the src/ directory */
-	char *uifile = "../data/baka.ui";
+#ifdef BAKA_RUN_IN_SOURCE_TREE
+	uifile = g_build_filename("data", "baka.ui", NULL);
+	if(g_file_test(uifile, G_FILE_TEST_EXISTS) == FALSE) {
+		g_free(uifile);
+		uifile = g_build_filename("..", "data", "baka.ui", NULL);
+	}
+#else
+	uifile = g_build_filename(DATADIR, "baka", "baka.ui", NULL);
+#endif
+
 
 	baka->builder = gtk_builder_new();
 
@@ -37,5 +46,6 @@ GtkWidget *baka_load_interface(Baka *baka)
 
 	baka->window = GTK_WIDGET(gtk_builder_get_object(baka->builder, "baka_main_window"));
 
+	g_free(uifile);
 	return baka->window;
 }

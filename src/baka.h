@@ -22,6 +22,10 @@
 
 #include <gtk/gtk.h>
 
+#if HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 typedef struct _Baka Baka;
 
 struct _Baka {
