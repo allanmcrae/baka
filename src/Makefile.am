@@ -6,6 +6,7 @@ AM_LDFLAGS = -g
 
 baka_SOURCES = \
 	baka.h baka.c \
+	credits.h \
 	interface.h interface.c \
 	menu.h menu.c
 

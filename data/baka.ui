@@ -15,12 +15,28 @@
 						<signal name="activate" handler="file_quit_action_callback" />
 					</object>
 				</child>
+				<child>
+					<object class="GtkAction" id="help_menu">
+						<property name="label" translatable="yes">_Help</property>
+					</object>
+				</child>
+				<child>
+					<object class="GtkAction" id="help_about">
+						<property name="name" translatable="yes">About</property>
+						<property name="stock_id">gtk-about</property>
+						<signal name="activate" handler="help_about_action_callback" />
+					</object>
+					<accelerator key="F1"/>
+				</child>
 			</object>
 		</child>
 		<ui>
 			<menubar name="baka_menubar">
 				<menu name="file" action="file_menu">
 					<menuitem name="quit" action="file_quit"/>
+				</menu>
+				<menu name="help" action="help_menu">
+					<menuitem name="about" action="help_about"/>
 				</menu>
 			</menubar>
 		</ui>

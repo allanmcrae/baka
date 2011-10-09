@@ -20,7 +20,6 @@
 #ifndef BAKA_INTERFACE_H
 #define BAKA_INTERFACE_H
 
-#include <gtk/gtk.h>
 #include "baka.h"
 
 GtkWidget *baka_load_interface(Baka* baka);

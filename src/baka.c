@@ -43,6 +43,8 @@ int main(int argc, char **argv)
 
 	baka = g_slice_new(Baka);
 
+	g_set_application_name(_("Baka Package Manager"));
+
 	baka->application = gtk_application_new("am.i.baka", G_APPLICATION_FLAGS_NONE);
 	g_signal_connect(baka->application, "activate", G_CALLBACK(activate), baka);
 

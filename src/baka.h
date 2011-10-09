@@ -20,11 +20,10 @@
 #ifndef BAKA_BAKA_H
 #define BAKA_BAKA_H
 
-#include <gtk/gtk.h>
+#include "config.h"
 
-#if HAVE_CONFIG_H
-#include <config.h>
-#endif
+#include <glib/gi18n.h>
+#include <gtk/gtk.h>
 
 typedef struct _Baka Baka;
 

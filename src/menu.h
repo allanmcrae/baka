@@ -20,10 +20,10 @@
 #ifndef BAKA_MENU_H
 #define BAKA_MENU_H
 
-#include <gtk/gtk.h>
 #include "baka.h"
 
 /* Callback functions for GtkBuilder */
 void file_quit_action_callback(GtkAction *action, Baka *baka);
+void help_about_action_callback(GtkAction *action, Baka *baka);
 
 #endif
