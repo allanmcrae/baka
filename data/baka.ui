@@ -47,15 +47,16 @@
 		<property name="default_height">250</property>
 		<property name="default_width">440</property>
 		<child>
-			<object class="GtkVBox" id="baka_main_vbox">
+			<object class="GtkGrid" id="baka_main_grid">
 				<property name="visible">True</property>
+				<property name="can_focus">False</property>
+				<property name="orientation">vertical</property>
 				<child>
 					<object class="GtkMenuBar" id="baka_menubar" constructor="baka_ui_manager">
 						<property name="visible">True</property>
+						<property name="can_focus">False</property>
+						<property name="hexpand">True</property>
 					</object>
-					<packing>
-						<property name="expand">False</property>
-					</packing>
 				</child>
 			</object>
 		</child>
