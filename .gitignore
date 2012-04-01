@@ -1,14 +1,12 @@
 aclocal.m4
 autom4te.cache
+build-aux
 baka-*.tar.gz
 config.h
 config.h.in
 config.log
 config.status
 configure
-depcomp
-install-sh
 Makefile
 Makefile.in
-missing
 stamp-h1

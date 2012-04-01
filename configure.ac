@@ -3,9 +3,10 @@
 
 AC_PREREQ([2.68])
 AC_INIT([baka], [0.0.0], [allan@archlinux.org], [], [https://github.com/allanbrokeit/baka])
-AM_INIT_AUTOMAKE([1.11.1 foreign])
 AC_CONFIG_SRCDIR([src/baka.c])
 AC_CONFIG_HEADERS([config.h])
+AC_CONFIG_AUX_DIR([build-aux])
+AM_INIT_AUTOMAKE([1.11.1 foreign])
 
 # Checks for programs.
 AC_PROG_CC
